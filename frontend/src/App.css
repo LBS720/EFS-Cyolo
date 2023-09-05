@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   filter: brightness(120%);
-  background-image: url("../public/images/Cyolo-logo.png");
+  background-color: black;
   background-size: cover; 
   background-repeat: no-repeat; 
   background-attachment: fixed;
