@@ -1,0 +1,20 @@
+.image-uploader-container {
+  padding: 10px;
+  font-family: sans-serif;
+  box-shadow: 0 0 5px #062e43;
+  border-radius: 5px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.upload-button {
+  outline: 0;
+  border: 0;
+  width: 100%;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 400;
+  padding: 8px 13px;
+  background: #062e43;
+}
