@@ -88,6 +88,7 @@ function ImageDropZone() {
         onChange={onFileSelect}
         ref={imageInputRef}
       ></input>
+      <div className="images-container"></div>
     </div>
   );
 }
