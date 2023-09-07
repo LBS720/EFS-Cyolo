@@ -2,9 +2,8 @@ body {
   margin: 0;
   padding: 0;
   filter: brightness(120%);
-  background-color: black;
-  background-size: cover; 
-  background-repeat: no-repeat; 
+  /*background-color: black;*/
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
-

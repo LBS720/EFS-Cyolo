@@ -1,10 +1,10 @@
 import "./titleComponent.css";
 
 interface TitleComponentPorps {
-    title: string
+  title: string;
 }
 
-function TitleComponent({title} :TitleComponentPorps) {
+function TitleComponent({ title }: TitleComponentPorps) {
   return (
     <div className="title-container">
       <div className="center">
@@ -12,7 +12,7 @@ function TitleComponent({title} :TitleComponentPorps) {
           <span>{title}</span>
           <span>{title}</span>
           <span>{title}</span>
-        </h1> 
+        </h1>
       </div>
     </div>
   );

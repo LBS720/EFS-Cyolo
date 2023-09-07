@@ -1,0 +1,23 @@
+@import url("react-datepicker/dist/react-datepicker.css");
+
+.image {
+  width: 75px;
+  margin-right: 5px;
+  height: 75px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.image span {
+  position: absolute;
+  top: -2px;
+  right: 9px;
+  font-size: 20px;
+  cursor: pointer;
+}

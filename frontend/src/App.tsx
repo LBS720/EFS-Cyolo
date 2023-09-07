@@ -1,10 +1,10 @@
-import './App.css';
-import TitleComponent from './components/titles/TitleComponent';
+import "./App.css";
+import ImageUploader from "./components/imageUploader/ImageUploader";
 
 function App() {
   return (
     <div className="App">
-      <TitleComponent title="EFS"></TitleComponent>
+      <ImageUploader></ImageUploader>
     </div>
   );
 }
