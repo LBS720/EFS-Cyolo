@@ -7,8 +7,26 @@ import "./imageUploader.css";
 function ImageUploader() {
   const images = useRecoilValue(imagesSelector);
 
-  const uploadImage = () => {
-    console.log(images);
+  const uploadImage = async () => {
+    try {
+      const formData = new FormData();
+      images.forEach((image, index) => {
+        formData.append(image.url, image.name);
+      });
+
+      const response = await fetch("/v1/file", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        console.log("Upload successful");
+      } else {
+        console.error("Upload failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
