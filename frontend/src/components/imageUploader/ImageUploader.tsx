@@ -14,7 +14,7 @@ function ImageUploader() {
         formData.append(image.url, image.name);
       });
 
-      const response = await fetch("/v1/file", {
+      const response = await fetch("/", {
         method: "POST",
         body: formData,
       });
