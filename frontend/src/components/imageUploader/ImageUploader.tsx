@@ -1,8 +1,8 @@
-import "./imageUploader.css";
 import ImageDropZone from "./ImageDropZone/ImageDropZone";
 import { imagesSelector } from "../../recoil/recoilSelectors";
 import { useRecoilValue } from "recoil";
 import ImagesContainer from "./imagesContainer/ImagesContainer";
+import "./imageUploader.css";
 
 function ImageUploader() {
   const images = useRecoilValue(imagesSelector);
