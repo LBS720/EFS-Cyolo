@@ -1,5 +1,7 @@
 .image-uploader-container {
   padding: 10px;
+  width: 70%;
+  margin: 0 auto;
   font-family: sans-serif;
   box-shadow: 0 0 5px #062e43;
   border-radius: 5px;
