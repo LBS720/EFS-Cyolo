@@ -2,7 +2,7 @@ import { Image } from "../../../../../../common/models/imageModel";
 import { imagesState } from "../../../../recoil/recoilAtoms";
 import { useRecoilState } from "recoil";
 import "./imageSetter.css";
-import DropdownMenu from "../../../utils/dropdowns/DropdownMenu";
+import { ChangeEvent, useState } from "react";
 
 interface ImageSetterProps {
   index: number;
@@ -11,6 +11,11 @@ interface ImageSetterProps {
 
 function ImageSetter({ index, image }: ImageSetterProps) {
   const [images, setImages] = useRecoilState(imagesState);
+  const [selectedDate, setSelectedDate] = useState<string>('');
+
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSelectedDate(e.target.value);
+  };
   const retentionTimeOptions: string[] = [
     "Don't autodelete",
     "After 5 minutes",
@@ -54,7 +59,13 @@ function ImageSetter({ index, image }: ImageSetterProps) {
       </div>
       <div></div>
       <div className="setting-retention-time-container">
-        <DropdownMenu options={retentionTimeOptions}></DropdownMenu>
+      <input
+        type="date"
+        id="dateInput"
+        name="dateInput"
+        value={selectedDate}
+        onChange={handleDateChange}
+      />      
       </div>
     </div>
   );
