@@ -12,6 +12,7 @@ interface ImageSetterProps {
 function ImageSetter({ index, image }: ImageSetterProps) {
   const [images, setImages] = useRecoilState(imagesState);
   const [selectedDate, setSelectedDate] = useState<string>('');
+  const today = new Date().toISOString().split('T')[0];
 
   const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedDate(e.target.value);
@@ -59,10 +60,13 @@ function ImageSetter({ index, image }: ImageSetterProps) {
       </div>
       <div></div>
       <div className="setting-retention-time-container">
+        <span>Retetion Time:</span>
       <input
+        className="retetion-date-picker"
         type="date"
         id="dateInput"
         name="dateInput"
+        min={today}
         value={selectedDate}
         onChange={handleDateChange}
       />      
