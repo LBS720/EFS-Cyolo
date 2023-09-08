@@ -74,7 +74,7 @@ function ImageDropZone() {
         <span className="select">Drop image here</span>
       ) : (
         <>
-          Drag & Drop image here or {""}
+          Drag & Drop image here or {""} 
           <span className="select" role="button" onClick={selectFiles}>
             Browse
           </span>
