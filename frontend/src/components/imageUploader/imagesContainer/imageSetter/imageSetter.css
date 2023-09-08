@@ -2,7 +2,7 @@
 
 .image {
   width: 75px;
-  margin-right: 5px;
+  margin: 0 auto;
   height: 75px;
   position: relative;
   margin-bottom: 8px;
