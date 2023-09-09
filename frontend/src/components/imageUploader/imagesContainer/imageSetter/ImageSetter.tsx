@@ -2,7 +2,7 @@ import { Image } from "../../../../../../common/models/imageModel";
 import { imagesState } from "../../../../recoil/recoilAtoms";
 import { useRecoilState } from "recoil";
 import "./imageSetter.css";
-import { ChangeEvent, useState } from "react";
+import DatePicker from "../../../utils/datePickers/DatePicker";
 
 interface ImageSetterProps {
   index: number;
@@ -11,12 +11,6 @@ interface ImageSetterProps {
 
 function ImageSetter({ index, image }: ImageSetterProps) {
   const [images, setImages] = useRecoilState(imagesState);
-  const [selectedDate, setSelectedDate] = useState<string>('');
-  const today = new Date().toISOString().split('T')[0];
-
-  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSelectedDate(e.target.value);
-  };
 
   const deleteImage = (imageIndex: number) => {
     setImages((prevImages: Image[]) =>
@@ -35,15 +29,7 @@ function ImageSetter({ index, image }: ImageSetterProps) {
       <div></div>
       <div className="setting-retention-time-container">
         <span>Retetion Time:</span>
-      <input
-        className="retetion-date-picker"
-        type="date"
-        id="dateInput"
-        name="dateInput"
-        min={today}
-        value={selectedDate}
-        onChange={handleDateChange}
-      />      
+        <DatePicker></DatePicker>
       </div>
     </div>
   );

@@ -19,10 +19,3 @@
   font-size: 20px;
   cursor: pointer;
 }
-
-.retetion-date-picker {
-  display: flex;
-  width: 100px;
-  height: 20px;
-  border-radius: 5px;
-}
