@@ -3,6 +3,7 @@ import { imagesState } from "../../../../recoil/recoilAtoms";
 import { useRecoilState } from "recoil";
 import "./imageSetter.css";
 import DatePicker from "../../../utils/datePickers/DatePicker";
+import { useEffect, useState } from "react";
 
 interface ImageSetterProps {
   index: number;
@@ -10,7 +11,21 @@ interface ImageSetterProps {
 }
 
 function ImageSetter({ index, image }: ImageSetterProps) {
-  const [images, setImages] = useRecoilState(imagesState);
+  const [images, setImages] = useRecoilState<Image[]>(imagesState);
+  const [datePicker, setDatePicker] = useState<string>("");
+
+  console.log(datePicker);
+  console.log(images);
+
+  useEffect(() => {
+    const updatedImages = [...images];
+    updatedImages[index] = {
+      ...updatedImages[index],
+      retentionTime: datePicker,
+    };
+    setImages(updatedImages);
+    console.log(images);
+  }, [datePicker, setDatePicker]);
 
   const deleteImage = (imageIndex: number) => {
     setImages((prevImages: Image[]) =>
@@ -29,7 +44,7 @@ function ImageSetter({ index, image }: ImageSetterProps) {
       <div></div>
       <div className="setting-retention-time-container">
         <span id="retention-time-title">Retetion Time:</span>
-        <DatePicker></DatePicker>
+        <DatePicker onDateChange={setDatePicker}></DatePicker>
       </div>
     </div>
   );

@@ -1,7 +1,11 @@
 import { ChangeEvent, useState } from "react";
 import "./datePicker.css";
 
-function DatePicker() {
+interface DatePickerProps {
+  onDateChange: (date: string) => void;
+}
+
+function DatePicker({ onDateChange }: DatePickerProps) {
   const [selectedDate, setSelectedDate] = useState<string>("");
   const today = new Date().toISOString().split("T")[0];
 
@@ -14,6 +18,7 @@ function DatePicker() {
       alert("Please select a date and time in the future.");
     } else {
       setSelectedDate(newSelectedDate);
+      onDateChange(newSelectedDate);
     }
   };
 
