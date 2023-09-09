@@ -21,14 +21,14 @@ function ImageSetter({ index, image }: ImageSetterProps) {
   return (
     <div className="image-setter">
       <div className="image" key={index}>
-        <span className="delete" onClick={() => deleteImage(index)}>
+        <span id="delete" onClick={() => deleteImage(index)}>
           &times;
         </span>
         <img src={image.url} alt={image.name} />
       </div>
       <div></div>
       <div className="setting-retention-time-container">
-        <span>Retetion Time:</span>
+        <span id="retention-time-title">Retetion Time:</span>
         <DatePicker></DatePicker>
       </div>
     </div>
