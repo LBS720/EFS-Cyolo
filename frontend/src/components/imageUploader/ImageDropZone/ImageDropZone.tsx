@@ -28,7 +28,7 @@ function ImageDropZone() {
           id: uuidv4(),
           name: file.name,
           url: URL.createObjectURL(file),
-          retentionTime: 1,
+          retentionTime: "",
         })),
     ]);
   };
@@ -58,7 +58,7 @@ function ImageDropZone() {
           id: uuidv4(),
           name: file.name,
           url: URL.createObjectURL(file),
-          retentionTime: 1,
+          retentionTime: "",
         })),
     ]);
   };
