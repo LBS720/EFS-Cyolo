@@ -8,25 +8,13 @@ function ImageUploader() {
   const images = useRecoilValue(imagesSelector);
 
   const uploadImage = async () => {
-    try {
-      const formData = new FormData();
-      images.forEach((image, index) => {
-        formData.append(image.url, image.name);
-      });
-
-      const response = await fetch("/", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        console.log("Upload successful");
-      } else {
-        console.error("Upload failed");
-      }
-    } catch (error) {
-      console.error("Error:", error);
+    const hasEmptyRetentionTime = images.some(
+      (image) => image.retentionTime === ""
+    );
+    if (hasEmptyRetentionTime) {
+      alert("What do you think you do? Please enter Retention Time!");
     }
+    console.log(images);
   };
 
   return (

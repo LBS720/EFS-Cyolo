@@ -1,6 +1,9 @@
 .drag-area {
   height: 150px;
+  width: 70%;
   border-radius: 5px;
+  flex-direction: column;
+  margin: 0 auto;
   border: 2px dashed #062e43;
   color: #062e43;
   background: #6b8da3;
@@ -13,8 +16,8 @@
 }
 
 .select {
+  display: contents;
   color: #062e43;
-  margin-left: 5px;
   cursor: pointer;
   transition: 0.4s;
 }
