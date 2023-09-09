@@ -11,6 +11,6 @@ const storage = multer.diskStorage({
   },
 });
 
-const fileFilter = (req, file, cb) => {
-  const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png"];
-};
+const uploadMiddleware = multer({ storage });
+
+module.exports = uploadMiddleware;
