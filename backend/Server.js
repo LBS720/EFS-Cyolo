@@ -11,12 +11,16 @@ app.use(express.static("public"));
 
 const PORT = process.env.PORT || 5006;
 
-mongoose.connect(process.env.MONGO_URI, () => {
-   console.log("mongo conected")
-});
+mongoose.connect(
+  "mongodb+srv://LBS720:LBSCyolo@efs-cyolo.xs5kdaa.mongodb.net/",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 app.use(UploadRoute);
 
 app.listen(PORT, () => {
-  console.log('server in ${PORT}')
-})
+  console.log("server in " + PORT);
+});
