@@ -1,0 +1,14 @@
+.date-picker-container {
+  display: flex;
+  width: 100px;
+  height: 20px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
