@@ -2,7 +2,6 @@ import { Image } from "../../../../../common/models/imageModel";
 import { imagesState } from "../../../recoil/recoilAtoms";
 import React, { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
-import { v4 as uuidv4 } from "uuid";
 import "./imageDropZone.css";
 
 function ImageDropZone() {
@@ -25,7 +24,6 @@ function ImageDropZone() {
         .filter((file) => file.type.startsWith("image/"))
         .filter((file) => !prevImages.some((e) => e.name === file.name))
         .map((file) => ({
-          id: uuidv4(),
           name: file.name,
           url: URL.createObjectURL(file),
           retentionTime: "",
@@ -55,7 +53,6 @@ function ImageDropZone() {
         .filter((file) => file.type.startsWith("image/"))
         .filter((file) => !prevImages.some((e) => e.name === file.name))
         .map((file) => ({
-          id: uuidv4(),
           name: file.name,
           url: URL.createObjectURL(file),
           retentionTime: "",

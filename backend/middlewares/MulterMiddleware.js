@@ -1,13 +1,14 @@
 const multer = require("multer");
-const { v4: uuild4 } = require("uuild");
-const path = require(path);
+const { v4: uuidv4 } = require("uuid");
+const path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./public/uploads");
   },
-  fileName: function (req, file, cb) {
-    cb(null, "{uuid4()}_${path.exname(file.originalname)}");
+  filename: function (req, file, cb) {
+    const uniqueFilename = `${uuidv4()}_${path.extname(file.originalname)}`;
+    cb(null, uniqueFilename);
   },
 });
 
