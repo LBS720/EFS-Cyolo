@@ -4,17 +4,15 @@ const UploadModel = require("../models/UploadModel");
 const { v4: uuidv4 } = require("uuid");
 const uploadMiddleware = require("../middlewares/MulterMiddleware");
 
-// POST /v1/file - Upload a single file
 router.post("/file", uploadMiddleware.single("file"), async (req, res) => {
   const promises = [];
 
   try {
-    const images = req.body;
+    const images = req.body.images;
 
     console.log(images);
     images.forEach((image) => {
       const newUpload = new UploadModel({
-        id: uuidv4(), // Generate a new UUID here
         name: image.name,
         url: image.url,
         retentionTime: image.retentionTime,
@@ -32,10 +30,8 @@ router.post("/file", uploadMiddleware.single("file"), async (req, res) => {
   }
 });
 
-// GET /v1/:fileUrl - Retrieve a file by URL
 router.get("/:fileUrl", async (req, res) => {
   try {
-    // Find the document by URL
     const file = await UploadModel.findOne({
       url: `/uploads/${req.params.fileUrl}`,
     });
