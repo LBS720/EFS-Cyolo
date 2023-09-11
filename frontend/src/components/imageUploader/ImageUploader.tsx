@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import ImagesContainer from "./imagesContainer/ImagesContainer";
 import axios from "axios";
 import "./imageUploader.css";
+import { error } from "console";
 
 interface ImageUploaderPorps {
   setIsUploadSuccessful: (value: boolean) => void;
@@ -24,12 +25,11 @@ function ImageUploader({ setIsUploadSuccessful }: ImageUploaderPorps) {
     );
   };
 
-  const uploadImages = async () => {
-    console.log("here");
+  const uploadImages = () => {
     hasImage();
     hasEmptyRetentionTime();
     try {
-      const response = await axios.post(
+      axios.post(
         "http://localhost:5006/v1/file",
         { images },
         {
@@ -38,13 +38,10 @@ function ImageUploader({ setIsUploadSuccessful }: ImageUploaderPorps) {
           },
         }
       );
-      // Log the numeric status code
-      console.log("Status Code:", response.status);
-
-      // Log the status text
-      console.log("Status Text:", response.statusText);
+      setIsUploadSuccessful(true);
     } catch (error) {
       console.error("Error uploading images:", error);
+      setIsUploadSuccessful(false);
     }
   };
 

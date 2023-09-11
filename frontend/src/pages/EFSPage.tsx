@@ -6,6 +6,7 @@ import UploadComplete from "../components/uploadComplete/UploadComplete";
 
 function EFSPage() {
   const [isUploadSuccessful, setIsUploadSuccessful] = useState<boolean>(false);
+  console.log(isUploadSuccessful);
   return (
     <div className="EFS-Page">
       <ParallaxPixelStars></ParallaxPixelStars>
