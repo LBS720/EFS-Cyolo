@@ -9,16 +9,6 @@ export const imagesSelector = selector<Image[]>({
   },
 });
 
-export const getImageById = selector({
-  key: "getImageById",
-  get:
-    ({ get }) =>
-    (imageId: string) => {
-      const images = get(imagesState);
-      return images.find((image) => image.id === imageId) || null;
-    },
-});
-
 export const getImageByName = selector({
   key: "getImageByName",
   get:
