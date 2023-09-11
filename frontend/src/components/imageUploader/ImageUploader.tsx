@@ -2,15 +2,19 @@ import ImageDropZone from "./ImageDropZone/ImageDropZone";
 import { imagesSelector } from "../../recoil/recoilSelectors";
 import { useRecoilValue } from "recoil";
 import ImagesContainer from "./imagesContainer/ImagesContainer";
+import { Image } from "../../../../common/models/imageModel";
 import axios from "axios";
 import "./imageUploader.css";
-import { error } from "console";
 
 interface ImageUploaderPorps {
   setIsUploadSuccessful: (value: boolean) => void;
+  setUploadedImages: (value: Image[]) => void;
 }
 
-function ImageUploader({ setIsUploadSuccessful }: ImageUploaderPorps) {
+function ImageUploader({
+  setIsUploadSuccessful,
+  setUploadedImages,
+}: ImageUploaderPorps) {
   const images = useRecoilValue(imagesSelector);
   const hasImage = () =>
     images.length === 0 && alert("Please select a file to upload.");
@@ -38,6 +42,7 @@ function ImageUploader({ setIsUploadSuccessful }: ImageUploaderPorps) {
           },
         }
       );
+      setUploadedImages(images);
       setIsUploadSuccessful(true);
     } catch (error) {
       console.error("Error uploading images:", error);
