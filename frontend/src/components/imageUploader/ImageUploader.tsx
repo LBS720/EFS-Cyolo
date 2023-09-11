@@ -5,46 +5,48 @@ import ImagesContainer from "./imagesContainer/ImagesContainer";
 import axios from "axios";
 import "./imageUploader.css";
 
-function ImageUploader() {
-  const images = useRecoilValue(imagesSelector);
+interface ImageUploaderPorps {
+  setIsUploadSuccessful: (value: boolean) => void;
+}
 
-  const hasImage = () => {
-    if (!images) {
-      alert("Please select a file to upload.");
-      return;
-    }
-  }
+function ImageUploader({ setIsUploadSuccessful }: ImageUploaderPorps) {
+  const images = useRecoilValue(imagesSelector);
+  const hasImage = () =>
+    images.length === 0 && alert("Please select a file to upload.");
 
   const hasEmptyRetentionTime = () => {
-      const hasEmptyRetentionTime = images.some(
-        (image) => image.retentionTime === ""
-      );
-      if (hasEmptyRetentionTime) {
-        alert("Please enter Retention Time for all images.");
-        return;
-      }
-  }
+    const hasEmptyRetentionTime = images.some(
+      (image) => image.retentionTime === ""
+    );
+    return (
+      hasEmptyRetentionTime &&
+      alert("Please enter Retention Time for all images.")
+    );
+  };
 
   const uploadImages = async () => {
+    console.log("here");
     hasImage();
     hasEmptyRetentionTime();
-
     try {
       const response = await axios.post(
         "http://localhost:5006/v1/file",
-        { images }, 
+        { images },
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
+      // Log the numeric status code
+      console.log("Status Code:", response.status);
+
+      // Log the status text
+      console.log("Status Text:", response.statusText);
     } catch (error) {
       console.error("Error uploading images:", error);
     }
   };
-  
-
 
   return (
     <div className="image-uploader-container">
