@@ -23,10 +23,10 @@ router.post("/file", uploadMiddleware.single("file"), async (req, res) => {
     });
 
     await Promise.all(promises);
-    res.status(201).json({ message: "Images uploaded successfully" });
+    res.status(201);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500);
   }
 });
 
