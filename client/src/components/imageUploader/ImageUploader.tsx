@@ -3,7 +3,7 @@ import { imagesSelector } from "../../recoil/recoilSelectors";
 import { useRecoilValue } from "recoil";
 import ImagesContainer from "./imagesContainer/ImagesContainer";
 import { Image } from "../../../../common/models/imageModel";
-import axios from "axios";
+import { uploadFile } from "../../services/api";
 import "./imageUploader.css";
 
 interface ImageUploaderPorps {
@@ -29,25 +29,10 @@ function ImageUploader({
     );
   };
 
-  const uploadImages = () => {
+  const uploadImages = async () => {
     hasImage();
     hasEmptyRetentionTime();
-    try {
-      axios.post(
-        "http://localhost:5006/v1/file",
-        { images },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      setUploadedImages(images);
-      setIsUploadSuccessful(true);
-    } catch (error) {
-      console.error("Error uploading images:", error);
-      setIsUploadSuccessful(false);
-    }
+    const response = uploadFile(images);
   };
 
   return (
