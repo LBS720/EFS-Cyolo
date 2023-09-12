@@ -1,4 +1,4 @@
-import { Image } from "../../../../common/models/imageModel";
+import { Image } from "../../models/imageModel";
 import React, { useState } from "react";
 import "./uploadComplete.css";
 

@@ -1,4 +1,4 @@
-import { Image } from "../../../../../../common/models/imageModel";
+import { Image } from "../../../../models/imageModel";
 import { imagesState } from "../../../../recoil/recoilAtoms";
 import { useRecoilState } from "recoil";
 import "./imageSetter.css";

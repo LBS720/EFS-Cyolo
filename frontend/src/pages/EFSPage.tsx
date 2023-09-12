@@ -3,7 +3,7 @@ import ImageUploader from "../components/imageUploader/ImageUploader";
 import ParallaxPixelStars from "../components/utils/backgrounds/ParallaxPixelStars";
 import "./efsPage.css";
 import UploadComplete from "../components/uploadComplete/UploadComplete";
-import { Image } from "../../../common/models/imageModel";
+import { Image } from "../models/imageModel";
 
 function EFSPage() {
   const [isUploadSuccessful, setIsUploadSuccessful] = useState<boolean>(false);

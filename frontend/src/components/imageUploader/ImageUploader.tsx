@@ -2,7 +2,7 @@ import ImageDropZone from "./ImageDropZone/ImageDropZone";
 import { imagesSelector } from "../../recoil/recoilSelectors";
 import { useRecoilValue } from "recoil";
 import ImagesContainer from "./imagesContainer/ImagesContainer";
-import { Image } from "../../../../common/models/imageModel";
+import { Image } from "../../models/imageModel";
 import axios from "axios";
 import "./imageUploader.css";
 
