@@ -14,9 +14,6 @@ function ImageSetter({ index, image }: ImageSetterProps) {
   const [images, setImages] = useRecoilState<Image[]>(imagesState);
   const [datePicker, setDatePicker] = useState<string>("");
 
-  console.log(datePicker);
-  console.log(images);
-
   useEffect(() => {
     const updatedImages = [...images];
     updatedImages[index] = {
@@ -24,7 +21,6 @@ function ImageSetter({ index, image }: ImageSetterProps) {
       retentionTime: datePicker,
     };
     setImages(updatedImages);
-    console.log(images);
   }, [datePicker, setDatePicker]);
 
   const deleteImage = (imageIndex: number) => {

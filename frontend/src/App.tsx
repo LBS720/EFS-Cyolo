@@ -1,12 +1,10 @@
 import "./App.css";
-import ImageUploader from "./components/imageUploader/ImageUploader";
-import ParallaxPixelStars from "./components/utils/backgrounds/ParallaxPixelStars";
+import EFSPage from "./pages/EFSPage";
 
 function App() {
   return (
     <div className="App">
-      <ParallaxPixelStars></ParallaxPixelStars>
-      <ImageUploader></ImageUploader>
+      <EFSPage></EFSPage>
     </div>
   );
 }

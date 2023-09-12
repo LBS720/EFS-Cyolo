@@ -30,14 +30,22 @@ router.post("/file", uploadMiddleware.single("file"), async (req, res) => {
   }
 });
 
-router.get("/:fileUrl", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
+    const fileUrl = req.query.fileUrl;
+
     const file = await UploadModel.findOne({
-      url: `/uploads/${req.params.fileUrl}`,
+      url: `/uploads/${fileUrl}`,
     });
 
     if (!file) {
       return res.status(404).json({ error: "File not found" });
+    }
+
+    const retentionTime = new Date(file.retentionTime);
+
+    if (retentionTime <= new Date()) {
+      return res.status(404).json({ error: "File has expired" });
     }
 
     res.status(200).json({
