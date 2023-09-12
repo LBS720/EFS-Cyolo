@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const UploadModel = require("../models/UploadModel");
 const { v4: uuidv4 } = require("uuid");
-const uploadMiddleware = require("../middlewares/MulterMiddleware");
 
-router.post("/file", uploadMiddleware.single("file"), async (req, res) => {
+router.post("/file",  async (req, res) => {
   const promises = [];
 
   try {
@@ -13,8 +12,8 @@ router.post("/file", uploadMiddleware.single("file"), async (req, res) => {
     console.log(images);
     images.forEach((image) => {
       const newUpload = new UploadModel({
+        id: uuidv4(),
         name: image.name,
-        url: image.url,
         retentionTime: image.retentionTime,
       });
 

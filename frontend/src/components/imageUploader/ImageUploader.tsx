@@ -45,6 +45,7 @@ function ImageUploader({
       setUploadedImages(images);
       setIsUploadSuccessful(true);
     } catch (error) {
+      console.log("error");
       console.error("Error uploading images:", error);
       setIsUploadSuccessful(false);
     }
