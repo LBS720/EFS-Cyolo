@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const uploadImage = async (request, response) => {
+  console.log("reach")
   const fileObj = {
     path: request.file.path,
     name: request.file.originalname,
@@ -13,7 +14,7 @@ export const uploadImage = async (request, response) => {
   try {
     const file = await File.create(fileObj);
     response.status(200).json({
-      path: `http://localhost:${process.env.PORT}/v1/file/${file._id}`,
+      path: `http://localhost:5006/v1/file/${file._id}`,
     });
   } catch (error) {
     console.error(error.message);
