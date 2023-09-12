@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon Server.js",
-    "start-pm2": "pm2 start removeExpiredFiles.js --name removeExpiredFiles --watch -f"
+    "start": "node Server.js"
   },
   "author": "",
   "license": "ISC",

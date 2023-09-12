@@ -17,14 +17,19 @@ function UploadComplete({ uploadedImages }: UploadCompleteProps) {
 
   return (
     <div className="upload-complete-container">
-      <h2>Upload Complete</h2>
+      <h2>Upload Complete !</h2>
       {uploadedImages.map((image) => (
         <div className="image-item" key={image.id}>
           <img key={image.id} src={image.url} alt={image.name} />
-          <button onClick={() => copyImageUrl(image.url)}>
+          <button
+            className="copy-url-button"
+            onClick={() => copyImageUrl(image.url)}
+          >
             Copy Image URL
           </button>
-          {copiedImageUrl === image.url && <p>Copied!</p>}
+          <span id="copied-alert">
+            {copiedImageUrl === image.url && <p>Copied!</p>}
+          </span>
         </div>
       ))}
     </div>

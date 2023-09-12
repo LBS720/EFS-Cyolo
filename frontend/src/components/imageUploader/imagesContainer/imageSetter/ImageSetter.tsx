@@ -35,7 +35,9 @@ function ImageSetter({ index, image }: ImageSetterProps) {
         <span id="delete" onClick={() => deleteImage(index)}>
           &times;
         </span>
-        <img src={image.url} alt={image.name} />
+        <form action="/file" method="POST" encType="multipart/form-data">
+          <img src={image.url} alt={image.name} />
+        </form>
       </div>
       <div></div>
       <div className="setting-retention-time-container">
