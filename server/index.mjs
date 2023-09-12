@@ -1,5 +1,5 @@
 import express from "express";
-import router from "./routes/routes.mjs"; // Use .mjs extension
+import router from "./routes/routes.mjs";
 
 const app = express();
 
