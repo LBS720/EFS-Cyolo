@@ -1,4 +1,4 @@
-import { Image } from "../../../../../common/models/imageModel";
+import { Image } from "../../../common/models/imageModel";
 import { imagesState } from "../../../recoil/recoilAtoms";
 import { useRecoilState } from "recoil";
 import "./imagesContainer.css";
@@ -11,7 +11,7 @@ function ImagesContainer() {
   return (
     <div className="images-container">
       {images.map((image: Image, index: number) => (
-        <ImageSetter index={index} image={image}></ImageSetter>
+        <ImageSetter key={image.id} index={index} image={image}></ImageSetter>
       ))}
     </div>
   );

@@ -1,8 +1,9 @@
-import { Image } from "../../../../../common/models/imageModel";
+import { Image } from "../../../common/models/imageModel";
 import { imagesState } from "../../../recoil/recoilAtoms";
 import React, { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import "./imageDropZone.css";
+const { v4: uuidv4 } = require("uuid");
 
 function ImageDropZone() {
   const [isDragging, setIsDragging] = useState(false);
@@ -15,20 +16,25 @@ function ImageDropZone() {
     }
   };
 
-  const onFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (!files || files.length === 0) return;
+  const setImageToUpload = (files: FileList) => {
     setImages((prevImages: Image[]) => [
       ...prevImages,
       ...Array.from(files)
         .filter((file) => file.type.startsWith("image/"))
         .filter((file) => !prevImages.some((e) => e.name === file.name))
         .map((file) => ({
+          id: uuidv4(),
           name: file.name,
           url: URL.createObjectURL(file),
           retentionTime: "",
         })),
     ]);
+  };
+
+  const onFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
+    setImageToUpload(files);
   };
 
   const onDragOver = (event: React.DragEvent<HTMLDivElement>) => {
@@ -47,17 +53,7 @@ function ImageDropZone() {
     setIsDragging(false);
     const files = event.dataTransfer.files;
     if (!files || files.length === 0) return;
-    setImages((prevImages: Image[]) => [
-      ...prevImages,
-      ...Array.from(files)
-        .filter((file) => file.type.startsWith("image/"))
-        .filter((file) => !prevImages.some((e) => e.name === file.name))
-        .map((file) => ({
-          name: file.name,
-          url: URL.createObjectURL(file),
-          retentionTime: "",
-        })),
-    ]);
+    setImageToUpload(files);
   };
 
   return (

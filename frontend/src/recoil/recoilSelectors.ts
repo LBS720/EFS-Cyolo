@@ -1,6 +1,6 @@
 import { selector } from "recoil";
 import { imagesState } from "./recoilAtoms";
-import { Image } from "../../../common/models/imageModel";
+import { Image } from "../common/models/imageModel";
 
 export const imagesSelector = selector<Image[]>({
   key: "imagesSelector",

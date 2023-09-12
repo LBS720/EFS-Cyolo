@@ -1,4 +1,4 @@
-import { Image } from "../../../../common/models/imageModel";
+import { Image } from "../../common/models/imageModel";
 import React, { useState } from "react";
 import "./uploadComplete.css";
 
@@ -19,8 +19,8 @@ function UploadComplete({ uploadedImages }: UploadCompleteProps) {
     <div className="upload-complete-container">
       <h2>Upload Complete</h2>
       {uploadedImages.map((image) => (
-        <div className="image-item">
-          <img src={image.url} alt={image.name} />
+        <div className="image-item" key={image.id}>
+          <img key={image.id} src={image.url} alt={image.name} />
           <button onClick={() => copyImageUrl(image.url)}>
             Copy Image URL
           </button>
