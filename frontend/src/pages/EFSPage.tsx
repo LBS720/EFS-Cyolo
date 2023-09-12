@@ -9,7 +9,6 @@ function EFSPage() {
   const [isUploadSuccessful, setIsUploadSuccessful] = useState<boolean>(false);
   const [uploadedImages, setUploadedImages] = useState<Image[]>([]);
 
-  console.log(isUploadSuccessful);
   return (
     <div className="EFS-Page">
       <ParallaxPixelStars></ParallaxPixelStars>

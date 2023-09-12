@@ -2,8 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const uploadRoutes = require("./routes/UploadRoute");
 const connectToDatabase = require("./db");
-const multer = require('multer');
-
 const app = express();
 
 app.use(cors());

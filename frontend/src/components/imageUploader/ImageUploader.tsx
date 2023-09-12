@@ -32,6 +32,7 @@ function ImageUploader({
   const uploadImages = () => {
     hasImage();
     hasEmptyRetentionTime();
+
     try {
       axios.post(
         "http://localhost:5006/v1/file",
@@ -45,7 +46,6 @@ function ImageUploader({
       setUploadedImages(images);
       setIsUploadSuccessful(true);
     } catch (error) {
-      console.log("error");
       console.error("Error uploading images:", error);
       setIsUploadSuccessful(false);
     }

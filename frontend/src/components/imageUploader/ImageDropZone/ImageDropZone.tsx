@@ -25,6 +25,7 @@ function ImageDropZone() {
         .map((file) => ({
           id: uuidv4(),
           name: file.name,
+          file: file,
           url: URL.createObjectURL(file),
           retentionTime: "",
         })),
@@ -73,15 +74,16 @@ function ImageDropZone() {
           </span>
         </>
       )}
-      <input
-        name="file"
-        type="file"
-        className="file"
-        multiple
-        onChange={onFileSelect}
-        ref={imageInputRef}
-      ></input>
-      <div className="images-container"></div>
+      <form action="/file" method="POST" encType="multipart/form-data">
+        <input
+          name="image"
+          type="file"
+          className="file"
+          multiple
+          onChange={onFileSelect}
+          ref={imageInputRef}
+        ></input>
+      </form>
     </div>
   );
 }

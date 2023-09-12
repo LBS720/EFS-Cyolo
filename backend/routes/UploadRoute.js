@@ -1,23 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const UploadModel = require("../models/UploadModel");
 const { v4: uuidv4 } = require("uuid");
+const UploadModel = require("../models/UploadModel");
+const MulterMiddleware = require("../MulterMiddleware");
 
-router.post("/file",  async (req, res) => {
+
+router.post("/file", MulterMiddleware.single("image"), async (req, res) => {
   const promises = [];
-
+  
   try {
-    const images = req.body.images;
+    const images = req.body.images; 
 
-    console.log(images);
-    images.forEach((image) => {
+    images.forEach((image, index) => {
       const newUpload = new UploadModel({
-        id: uuidv4(),
+        id: req.body.images[index].id,
         name: image.name,
         retentionTime: image.retentionTime,
       });
 
-      console.log(newUpload);
       promises.push(newUpload.save());
     });
 
