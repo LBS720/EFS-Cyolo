@@ -4,6 +4,7 @@ import ParallaxPixelStars from "../components/utils/backgrounds/ParallaxPixelSta
 import "./efsPage.css";
 import UploadComplete from "../components/uploadComplete/UploadComplete";
 import { Image } from "../common/models/imageModel";
+import BounceTitle from "../components/utils/titles/BounceTitle";
 
 function EFSPage() {
   const [isUploadSuccessful, setIsUploadSuccessful] = useState<boolean>(false);
@@ -11,6 +12,7 @@ function EFSPage() {
 
   return (
     <div className="EFS-Page">
+      <BounceTitle></BounceTitle>
       <ParallaxPixelStars></ParallaxPixelStars>
       {isUploadSuccessful ? (
         <UploadComplete uploadedImages={uploadedImages}></UploadComplete>
