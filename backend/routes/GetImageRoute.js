@@ -28,7 +28,7 @@ router.get("/:fileId", async (req, res) => {
     }
 
     if (retentionTime <= new Date()) {
-      await removeFile(fileId, imagePath);
+      //await removeFile(fileId, imagePath);
       return res.status(404).json({ error: "File has expired" });
     }
     
