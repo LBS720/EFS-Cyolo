@@ -2,7 +2,15 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const UploadModel = require("../models/UploadModel");
-const removeFile = require("../scripts/removeExpiredFile");
+
+async function removeFile(fileId, filePath) {
+  try {
+    await UploadModel.deleteOne({ id: fileId });
+    await fs.unlink(filePath);
+  } catch (error) {
+    console.error("Error removing file:", error);
+  }
+};
 
 router.get("/:fileId", async (req, res) => {
   try {

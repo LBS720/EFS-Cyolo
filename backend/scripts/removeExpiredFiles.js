@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const UploadModel = require("./models/UploadModel");
+const UploadModel = require("../models/UploadModel");
 const cron = require("node-cron");
 
 async function removeExpiredFiles() {
