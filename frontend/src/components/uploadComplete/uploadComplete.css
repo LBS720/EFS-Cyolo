@@ -4,25 +4,21 @@ body {
 }
 
 .upload-complete-container {
-  margin: 0 auto;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 h2 {
-  display: flex;
-  margin: 0 auto;
   margin-top: 10px;
 }
 
 .image-item {
-  display: flex;
-  margin: 0 auto;
-  height: 100px;
+  height: 200px;
 }
 
-img {
-  display: flex;
-  left: 50%;
-  right: 50%;
+.image-item img {
+  height: 100px;
 }
 
 .copy-url-button {
@@ -44,11 +40,6 @@ img {
 }
 
 #copied-alert {
-  display: flex;
   margin-top: 10px;
 }
 
-p {
-  display: flex;
-  margin: 0 auto;
-}
