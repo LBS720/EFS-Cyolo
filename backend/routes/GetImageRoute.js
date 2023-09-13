@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const UploadModel = require("../models/UploadModel");
+const removeFile = require("../scripts/removeExpiredFile");
 
 router.get("/:fileId", async (req, res) => {
   try {
@@ -19,6 +20,7 @@ router.get("/:fileId", async (req, res) => {
     }
 
     if (retentionTime <= new Date()) {
+      await removeFile(fileId, imagePath);
       return res.status(404).json({ error: "File has expired" });
     }
     
