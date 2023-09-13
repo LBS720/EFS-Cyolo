@@ -21,7 +21,7 @@ function ImageSetter({ index, image }: ImageSetterProps) {
       retentionTime: datePicker,
     };
     setImages(updatedImages);
-  }, [datePicker, setImages, index, images]);
+  }, [datePicker, setImages, index]);
 
   const deleteImage = useCallback(
     (imageIndex: number) => {
