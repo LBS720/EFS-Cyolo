@@ -5,7 +5,6 @@ import ImagesContainer from "./imagesContainer/ImagesContainer";
 import { Image } from "../../common/models/imageModel";
 import axios from "axios";
 import "./imageUploader.css";
-import { formControlClasses } from "@mui/material";
 
 interface ImageUploaderPorps {
   setIsUploadSuccessful: (value: boolean) => void;
@@ -30,32 +29,29 @@ function ImageUploader({
     );
   };
 
-  const uploadImages = () => {
+  const uploadImages = async () => {
     hasImage();
     hasEmptyRetentionTime();
-
-    console.log(images);
-
-    const formData = new FormData();
-
-    images.forEach((image, index) => {
-      formData.append("id", image.id);
-      formData.append("name", image.name);
-      formData.append("image", image.file);
-      formData.append("retentionTime", image.retentionTime);
-    });
-
     try {
-      axios.post(
-        "http://localhost:5006/v1/file",
-        { formData },
-        {
+      const formDataArray: any[] = [];
+
+      images.forEach((image, index) => {
+        const formData = new FormData();
+        formData.append("id", image.id);
+        formData.append("name", image.name);
+        formData.append("image", image.file);
+        formData.append("retentionTime", image.retentionTime);
+        formDataArray.push(formData);
+
+        axios.post("http://localhost:5006/v1/file", formData, {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data", // Set the correct content type for FormData
           },
-        }
-      );
-      //need to check 201
+        });
+      });
+
+      await Promise.all(formDataArray);
+
       setUploadedImages(images);
       setIsUploadSuccessful(true);
     } catch (error) {

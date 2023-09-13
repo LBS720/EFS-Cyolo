@@ -8,16 +8,19 @@ router.post("/file", MulterMiddleware.single("image"), async (req, res) => {
   const promises = [];
 
   try {
-    const images = req.body;
+    const image = req.file;
+    const { id, name, retentionTime } = req.body;
 
     console.log(req.body);
+    console.log(req.file);
+
     console.log("reach");
 
     images.forEach((image, index) => {
       const newUpload = new UploadModel({
-        id: req.body.images[index].id,
-        name: image.name,
-        retentionTime: image.retentionTime,
+        id: id,
+        name: name,
+        retentionTime: retentionTime,
       });
 
       promises.push(newUpload.save());
