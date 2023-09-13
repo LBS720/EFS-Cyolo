@@ -3,15 +3,15 @@ const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     console.log(file);
-    cb(null, 'uploads'); 
+    cb(null, "./public/uploads");
   },
   filename: (req, file, cb) => {
-    cb(null, file.id); 
+    cb(null, "blablalb");
   },
 });
 
 const MulterMiddleware = multer({
-  storage: storage
-})
+  storage: storage,
+});
 
 module.exports = MulterMiddleware;

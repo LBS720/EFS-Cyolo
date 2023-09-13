@@ -5,6 +5,7 @@ import ImagesContainer from "./imagesContainer/ImagesContainer";
 import { Image } from "../../common/models/imageModel";
 import axios from "axios";
 import "./imageUploader.css";
+import { formControlClasses } from "@mui/material";
 
 interface ImageUploaderPorps {
   setIsUploadSuccessful: (value: boolean) => void;
@@ -33,16 +34,28 @@ function ImageUploader({
     hasImage();
     hasEmptyRetentionTime();
 
+    console.log(images);
+
+    const formData = new FormData();
+
+    images.forEach((image, index) => {
+      formData.append("id", image.id);
+      formData.append("name", image.name);
+      formData.append("image", image.file);
+      formData.append("retentionTime", image.retentionTime);
+    });
+
     try {
       axios.post(
         "http://localhost:5006/v1/file",
-        { images },
+        { formData },
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
+      //need to check 201
       setUploadedImages(images);
       setIsUploadSuccessful(true);
     } catch (error) {

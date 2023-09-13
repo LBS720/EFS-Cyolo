@@ -74,16 +74,14 @@ function ImageDropZone() {
           </span>
         </>
       )}
-      <form action="/file" method="POST" encType="multipart/form-data">
-        <input
-          name="image"
-          type="file"
-          className="file"
-          multiple
-          onChange={onFileSelect}
-          ref={imageInputRef}
-        ></input>
-      </form>
+      <input
+        name="image"
+        type="file"
+        className="file"
+        multiple
+        onChange={onFileSelect}
+        ref={imageInputRef}
+      />
     </div>
   );
 }

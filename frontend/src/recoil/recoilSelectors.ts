@@ -5,7 +5,8 @@ import { Image } from "../common/models/imageModel";
 export const imagesSelector = selector<Image[]>({
   key: "imagesSelector",
   get: ({ get }) => {
-    return get(imagesState);
+    const images = get(imagesState);
+    return images;
   },
 });
 
