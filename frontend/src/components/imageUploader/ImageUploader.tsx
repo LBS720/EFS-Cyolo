@@ -43,7 +43,7 @@ function ImageUploader({
     try {
       const formDataArray: any[] = [];
 
-      const requestPromises = images.forEach((image, index) => {
+      images.forEach((image, index) => {
         const formData = new FormData();
         formData.append("id", image.id);
         formData.append("name", image.name);
@@ -57,9 +57,7 @@ function ImageUploader({
           },
         });
       });
-
       await Promise.all(formDataArray);
-
       setUploadedImages(images);
       setIsUploadSuccessful(true);
     } catch (error) {
