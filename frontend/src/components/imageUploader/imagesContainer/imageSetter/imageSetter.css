@@ -1,0 +1,29 @@
+.image {
+  width: 75px;
+  margin: 0 auto;
+  height: 75px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.image span {
+  position: absolute;
+  top: -2px;
+  right: 9px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#retention-time-title {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 2;
+}

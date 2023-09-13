@@ -1,0 +1,33 @@
+.drag-area {
+  height: 200px;
+  width: 70%;
+  border-radius: 5px;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 2px dashed #062e43;
+  color: #062e43;
+  background: #6b8da3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  margin-top: 10px;
+}
+
+.select {
+  display: contents;
+  color: #062e43;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.select:hover {
+  opacity: 0.6;
+}
+
+input,
+.drag-area .on-drop,
+.drag-area.dragover .visible {
+  display: none;
+}
