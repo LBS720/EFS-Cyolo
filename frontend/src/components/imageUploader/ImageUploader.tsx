@@ -16,26 +16,34 @@ function ImageUploader({
   setUploadedImages,
 }: ImageUploaderPorps) {
   const images = useRecoilValue(imagesSelector);
-  const hasImage = () =>
-    images.length === 0 && alert("Please select a file to upload.");
+
+  const hasImage = () => {
+    if (images.length === 0) {
+      alert("Please select a file to upload.");
+      return true;
+    }
+    return false;
+  };
 
   const hasEmptyRetentionTime = () => {
     const hasEmptyRetentionTime = images.some(
       (image) => image.retentionTime === ""
     );
-    return (
-      hasEmptyRetentionTime &&
-      alert("Please enter Retention Time for all images.")
-    );
+    if (hasEmptyRetentionTime) {
+      alert("Please enter Retention Time for all images.");
+      return true;
+    }
+    return false;
   };
 
   const uploadImages = async () => {
-    hasImage();
-    hasEmptyRetentionTime();
+    if (hasImage() || hasEmptyRetentionTime()) {
+      return null;
+    }
     try {
       const formDataArray: any[] = [];
 
-      images.forEach((image, index) => {
+      const requestPromises = images.forEach((image, index) => {
         const formData = new FormData();
         formData.append("id", image.id);
         formData.append("name", image.name);
@@ -45,7 +53,7 @@ function ImageUploader({
 
         axios.post("http://localhost:5006/v1/file", formData, {
           headers: {
-            "Content-Type": "multipart/form-data", // Set the correct content type for FormData
+            "Content-Type": "multipart/form-data",
           },
         });
       });
