@@ -8,11 +8,9 @@ router.post("/file", MulterMiddleware.single("image"), async (req, res) => {
   const promises = [];
 
   try {
-    const images = req.file;
+    const images = [req.body];
+    console.log(images);
     const { id, name, retentionTime } = req.body;
-
-    console.log(req.body);
-    console.log(req.file);
 
     console.log("reach");
 
