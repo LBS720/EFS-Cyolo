@@ -15,7 +15,7 @@ router.post("/file", MulterMiddleware.single("image"), async (req, res) => {
       const newUpload = new UploadModel({
         id: id,
         name: name,
-        retentionTime: retentionTime,
+        retentionTime: new Date(retentionTime),
       });
 
       promises.push(newUpload.save());
@@ -26,35 +26,6 @@ router.post("/file", MulterMiddleware.single("image"), async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500);
-  }
-});
-
-router.get("/", async (req, res) => {
-  try {
-    const fileUrl = req.query.fileUrl;
-
-    const file = await UploadModel.findOne({
-      url: `/uploads/${fileUrl}`,
-    });
-
-    if (!file) {
-      return res.status(404).json({ error: "File not found" });
-    }
-
-    const retentionTime = new Date(file.retentionTime);
-
-    if (retentionTime <= new Date()) {
-      return res.status(404).json({ error: "File has expired" });
-    }
-
-    res.status(200).json({
-      filename: file.filename,
-      url: file.url,
-      retentionTime: file.retentionTime,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
   }
 });
 

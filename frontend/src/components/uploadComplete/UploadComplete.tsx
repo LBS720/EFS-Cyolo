@@ -23,7 +23,7 @@ function UploadComplete({ uploadedImages }: UploadCompleteProps) {
           <img key={image.id} src={image.url} alt={image.name} />
           <button
             className="copy-url-button"
-            onClick={() => copyImageUrl(image.url)}
+            onClick={() => copyImageUrl("http://localhost:5006/v1/" + image.id)}
           >
             Copy Image URL
           </button>
