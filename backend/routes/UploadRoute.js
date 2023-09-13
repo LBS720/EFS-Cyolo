@@ -8,7 +8,7 @@ router.post("/file", MulterMiddleware.single("image"), async (req, res) => {
   const promises = [];
 
   try {
-    const image = req.file;
+    const images = req.file;
     const { id, name, retentionTime } = req.body;
 
     console.log(req.body);
