@@ -15,6 +15,11 @@ function UploadComplete({ uploadedImages }: UploadCompleteProps) {
     });
   };
 
+  const handleCopyClick = (image: Image) => {
+    const imageUrl = "http://localhost:5006/v1/" + image.id;
+    copyImageUrl(imageUrl);
+  };
+
   return (
     <div className="upload-complete-container">
       <h2>Upload Complete !</h2>
@@ -23,12 +28,14 @@ function UploadComplete({ uploadedImages }: UploadCompleteProps) {
           <img key={image.id} src={image.url} alt={image.name} />
           <button
             className="copy-url-button"
-            onClick={() => copyImageUrl(image.url)}
+            onClick={() => handleCopyClick(image)}
           >
             Copy Image URL
           </button>
           <span id="copied-alert">
-            {copiedImageUrl === image.url && <p>Copied!</p>}
+            {copiedImageUrl === "http://localhost:5006/v1/" + image.id && (
+              <p>Copied!</p>
+            )}
           </span>
         </div>
       ))}

@@ -18,7 +18,7 @@ router.get("/:fileId", async (req, res) => {
     const fileContent = await UploadModel.findOne({
       id: `${fileId}`,
     });
-    const retentionTime = new Date(fileContent.retentionTime);
+    const retentionTime = fileContent.retentionTime;
     const fileExtension = fileContent.name.slice((fileContent.name.lastIndexOf(".") - 1 >>> 0) + 2);
     console.log(fileContent.id + "." + fileExtension);
     const imagePath = path.join(__dirname, "../public/uploads", fileContent.id + "." + fileExtension);
